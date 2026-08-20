@@ -28,6 +28,13 @@ pipeline {
                 bat 'powershell -Command "Compress-Archive -Path index.html,style.css,script.js,README.md -DestinationPath EasyCalc-build.zip -Force"'
             }
         }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying EasyCalc application'
+                bat 'powershell -Command "Expand-Archive -Path EasyCalc-build.zip -DestinationPath C:\\EasyCalc-Deployment -Force"'
+            }
+        }
     }
 
     post {
