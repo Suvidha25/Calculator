@@ -21,5 +21,12 @@ pipeline {
                 bat '"C:\\Program Files\\Git\\usr\\bin\\bash.exe" test.sh'
             }
         }
+
+        stage('Build') {
+            steps {
+                echo 'Building Easycalc Application'
+                bat 'powershell -Command "Compress-Archive -Path index.html,style.css,script.js,README.md -DestinationPath EasyCalc-build.zip -Force"'
+            }
+        }
     }
 }
