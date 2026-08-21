@@ -28,13 +28,14 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Docker Build') {
             steps {
-                echo 'Building Easycalc Application'
-                bat 'powershell -Command "Compress-Archive -Path index.html,style.css,script.js,README.md -DestinationPath EasyCalc-build.zip -Force"'
+               echo 'Building EasyCalc Docker image'
+               bat '"C:\\Users\\hsuvi\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" build -t easycalc:1.0 .'
             }
         }
 
+        
         stage('Deploy') {
             steps {
                 echo 'Deploying EasyCalc application'
