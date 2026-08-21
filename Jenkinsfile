@@ -22,6 +22,12 @@ pipeline {
             }
         }
 
+        stage('Docker Check') {
+            steps {
+               bat 'docker version'
+            }
+        }
+
         stage('Build') {
             steps {
                 echo 'Building Easycalc Application'
